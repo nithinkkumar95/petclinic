@@ -11,62 +11,75 @@ pipeline {
 
     stages {
         stage('Checkout Code') {
-            steps {
+            steps { 
                 script {
-                 pipelinejob.checkout()
-                }    
+                   pipelineAll.checkoutCode()
+               }
             }
         }
 
         stage('Set up Java 17') {
             steps {
-                setupJava()
+                 script {
+                   pipelineAll.setupJava()
+                 }
             }
         }
 
         stage('Set up Maven') {
             steps {
-                setupMaven()
+                 script {
+                   pipelineAll.setupMaven()
+                 }
             }
         }
 
         stage('Build with Maven') {
             steps {
-                script {
-                    pipelinejob.build()
-                }   
+                 script {
+                   pipelineAll.buildProject()
+                 }
             }
         }
-
+        
         stage('Upload Artifact') {
             steps {
-                echo 'Uploading artifact...'
-                archiveArtifacts artifacts: 'target/petclinic-0.0.1-SNAPSHOT.jar', allowEmptyArchive: true
+                 script {
+                   pipelineAll.uploadArtifact('target/petclinic-0.0.1-SNAPSHOT.jar')
+                 }
             }
         }
 
         stage('Run Application') {
             steps {
-                runApplication()
+                 script {
+                   pipelineAll.runApplication()
+                 }
             }
         }
 
         stage('Validate App is Running') {
             steps {
-                validateApp()
+                 script {
+                   pipelineAll.validateApp()
+                 }
             }
         }
 
         stage('Gracefully Stop Spring Boot App') {
             steps {
-                stopApplication()
+                 script {
+                   pipelineAll.stopApplication()
+                 }
             }
         }
     }
 
     post {
         always {
-            cleanup()
+             script {
+                   pipelineAll.cleanup()
+             }
         }
     }
 }
