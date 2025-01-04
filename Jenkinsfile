@@ -32,7 +32,9 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                buildProject()
+                script {
+                    pipelinejob.build()
+                }   
             }
         }
 
