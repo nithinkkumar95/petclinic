@@ -10,7 +10,7 @@
     <name>PetClinic</name>
     <description>Pet Clinic Application</description>
     <packaging>jar</packaging>
-       <distributionManagement>
+<distributionManagement>
     <repository>
         <id>central</id>
         <name>a0xvkm4ip05du-artifactory-primary-0-releases</name>
