@@ -6,13 +6,13 @@
 
     <groupId>com.example</groupId>
     <artifactId>petclinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>PetClinic</name>
     <description>Pet Clinic Application</description>
     <packaging>jar</packaging>
 <distributionManagement>
     <repository>
-        <id>petclinic-libs-release</id>
+        <id>central</id>
         <name>a0xvkm4ip05du-artifactory-primary-0-releases</name>
         <url>https://trialqaqb4f.jfrog.io/artifactory/petclinic-libs-release</url>
     </repository>
